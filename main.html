@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Hariharan R L | Academic Profile & C-FAIR Research</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        serif: ['Newsreader', 'Georgia', 'Cambria', 'serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        academic: {
+                            accent: '#2563eb', // Academic Blue
+                            accentDark: '#60a5fa',
+                            text: '#1f2937',
+                            muted: '#6b7280',
+                            bg: '#fbfbfb',
+                            cardBg: '#ffffff',
+                            darkBg: '#0f172a',
+                            darkCard: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS for Yann Dubois Style Aesthetics -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc;
+        }
+        .dark body {
+            background-color: #0b0f19;
+        }
+        .serif-title {
+            font-family: 'Newsreader', Georgia, serif;
+        }
+        .paper-link {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            color: #374151;
+            transition: all 0.15s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .dark .paper-link {
+            border-color: #334155;
+            background-color: #1e293b;
+            color: #cbd5e1;
+        }
+        .paper-link:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+        .dark .paper-link:hover {
+            border-color: #60a5fa;
+            color: #60a5fa;
+            background-color: #1e3a8a;
+        }
+        .active-tab {
+            border-bottom: 2px solid #2563eb;
+            color: #2563eb !important;
+            font-weight: 600;
+        }
+        .dark .active-tab {
+            border-bottom: 2px solid #60a5fa;
+            color: #60a5fa !important;
+        }
+    </style>
+</head>
+<body class="text-slate-800 dark:text-slate-200 min-h-screen flex flex-col transition-colors duration-200">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Name Logo -->
+                <a href="#about" onclick="switchTab('about')" class="font-serif text-xl sm:text-2xl font-semibold tracking-tight text-slate-900 dark:text-white hover:opacity-80 transition">
+                    Hariharan R L
+                </a>
+
+                <!-- Desktop Navigation Tabs -->
+                <nav class="hidden md:flex space-x-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                    <button onclick="switchTab('about')" id="nav-about" class="nav-btn py-5 transition hover:text-blue-600 dark:hover:text-blue-400 active-tab">About</button>
+                    <button onclick="switchTab('publications')" id="nav-publications" class="nav-btn py-5 transition hover:text-blue-600 dark:hover:text-blue-400">Publications</button>
+                    <button onclick="switchTab('research')" id="nav-research" class="nav-btn py-5 transition hover:text-blue-600 dark:hover:text-blue-400">Research Focus</button>
+                    <button onclick="switchTab('cv')" id="nav-cv" class="nav-btn py-5 transition hover:text-blue-600 dark:hover:text-blue-400">CV</button>
+                    <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn py-5 transition hover:text-blue-600 dark:hover:text-blue-400">Contact</button>
+                </nav>
+
+                <!-- Right Tools (Dark Mode) -->
+                <div class="flex items-center space-x-3">
+                    <button id="theme-toggle" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition" title="Toggle Theme">
+                        <i id="theme-icon" class="fas fa-moon text-base"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-300">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Nav -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm font-medium">
+            <button onclick="switchTab('about')" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">About</button>
+            <button onclick="switchTab('publications')" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Publications</button>
+            <button onclick="switchTab('research')" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Research Focus</button>
+            <button onclick="switchTab('cv')" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">CV</button>
+            <button onclick="switchTab('contact')" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Contact</button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">
+
+        <!-- TAB 1: ABOUT / HOME -->
+        <section id="tab-about" class="tab-content block space-y-10">
+            <!-- Profile Hero Grid (Yann Dubois Style) -->
+            <div class="grid md:grid-cols-12 gap-8 items-start pb-8 border-b border-slate-200 dark:border-slate-800">
+                <!-- Left Avatar & Links Sidebar -->
+                <div class="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+                    <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-md ring-1 ring-slate-200 dark:ring-slate-700 relative">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 text-slate-400">
+                            <i class="fas fa-user-graduate text-6xl text-slate-400 dark:text-slate-500 mb-2"></i>
+                            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Dr. Hariharan R L</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <h1 class="text-2xl font-bold text-slate-900 dark:text-white font-serif tracking-tight">
+                            Dr. Hariharan R L
+                        </h1>
+                        <p class="text-sm font-medium text-blue-600 dark:text-blue-400">
+                            Assistant Professor
+                        </p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-snug">
+                            Center for Artificial Intelligence Research (C-FAIR)<br>
+                            Vellore Institute of Technology (VIT), Vellore
+                        </p>
+                    </div>
+
+                    <!-- Social / Academic Badges -->
+                    <div class="flex flex-wrap gap-2 justify-center md:justify-start pt-2">
+                        <a href="https://scholar.google.com/citations?user=pgHYCbMAAAAJ&hl=en" target="_blank" class="paper-link" title="Google Scholar">
+                            <i class="fas fa-graduation-cap text-amber-500"></i> Scholar
+                        </a>
+                        <a href="https://aclanthology.org/people/hariharan-r-l/" target="_blank" class="paper-link" title="ACL Anthology">
+                            <i class="fas fa-book-open text-blue-500"></i> ACL
+                        </a>
+                        <a href="https://sites.google.com/view/hariharanrl/home" target="_blank" class="paper-link" title="Google Site">
+                            <i class="fas fa-globe text-emerald-500"></i> Google Site
+                        </a>
+                        <a href="mailto:hariharan.rl@vit.ac.in" class="paper-link" title="Email">
+                            <i class="fas fa-envelope text-rose-500"></i> Email
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Bio Text (Yann Dubois Style) -->
+                <div class="md:col-span-8 space-y-5 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
+                    <p class="text-lg font-serif italic text-slate-800 dark:text-slate-200">
+                        "Investigating explainable NLP, multimodal reasoning, and language technologies for low-resource Indian and Dravidian languages."
+                    </p>
+
+                    <p>
+                        I am an <strong>Assistant Professor</strong> at the <strong>Center for Artificial Intelligence Research (C-FAIR)</strong>, Vellore Institute of Technology (VIT), Vellore, India.
+                    </p>
+
+                    <p>
+                        I received my Doctorate of Philosophy (Ph.D.) from the Department of Information Technology at <strong>National Institute of Technology Karnataka (NITK Surathkal)</strong>. My PhD thesis focused on <em>"An Explainable Textual and Multimodal Disinformation Detection Leveraging Large Language Models"</em> under the guidance of Dr. Anand Kumar M.
+                    </p>
+
+                    <p>
+                        My current research focuses on:
+                    </p>
+                    <ul class="list-disc list-inside space-y-1.5 pl-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li><strong>Large Language Models (LLMs) & XAI:</strong> Fine-tuning LLMs, windowed attention mechanisms, and explainable AI techniques for fake news detection.</li>
+                        <li><strong>Multimodal Disinformation & Misinformation:</strong> Cross-modal news analysis combining text and image reasoning.</li>
+                        <li><strong>Dravidian NLP:</strong> Building tools and benchmark models for code-mixed, low-resource languages (Tamil, Malayalam, Kannada).</li>
+                        <li><strong>Social Media Analytics:</strong> Toxic span identification, hope speech detection, and mental health indicator mining.</li>
+                    </ul>
+
+                    <div class="p-4 bg-slate-100/80 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700/70 text-xs sm:text-sm flex items-center justify-between gap-4">
+                        <div>
+                            <span class="font-semibold text-slate-900 dark:text-white block">Looking for Collaborations?</span>
+                            <span class="text-slate-600 dark:text-slate-400">Open to joint research, PhD mentorship, and grants in AI, NLP, and Disinformation.</span>
+                        </div>
+                        <button onclick="switchTab('contact')" class="px-3.5 py-1.5 bg-blue-600 text-white rounded-lg font-medium text-xs hover:bg-blue-700 transition shrink-0">
+                            Get in Touch
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent News Feed (Yann Dubois Style) -->
+            <div class="space-y-4">
+                <h2 class="text-xl font-bold font-serif text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fas fa-bullhorn text-blue-600 text-sm"></i> News & Announcements
+                </h2>
+
+                <div class="space-y-3 text-xs sm:text-sm">
+                    <!-- News Item 1 -->
+                    <div class="flex gap-4 items-start p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-l-2 border-blue-600">
+                        <span class="font-mono text-xs font-semibold text-blue-600 dark:text-blue-400 shrink-0 w-16">Jan 2025</span>
+                        <div>
+                            <span class="font-medium text-slate-900 dark:text-white">Paper Published:</span>
+                            Our work titled <em>"LeDoFAN: Enhancing Lengthy Document Fake News Identification..."</em> was published in the <strong>International Journal of Machine Learning and Cybernetics (Springer)</strong>.
+                        </div>
+                    </div>
+
+                    <!-- News Item 2 -->
+                    <div class="flex gap-4 items-start p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-l-2 border-slate-300 dark:border-slate-700">
+                        <span class="font-mono text-xs font-semibold text-slate-500 shrink-0 w-16">Jan 2025</span>
+                        <div>
+                            <span class="font-medium text-slate-900 dark:text-white">Multimodal Paper Published:</span>
+                            <em>"A Reasoning-Based Explainable Multimodal Fake News Detection..."</em> published in <strong>Journal of Big Data (Springer)</strong>.
+                        </div>
+                    </div>
+
+                    <!-- News Item 3 -->
+                    <div class="flex gap-4 items-start p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-l-2 border-slate-300 dark:border-slate-700">
+                        <span class="font-mono text-xs font-semibold text-slate-500 shrink-0 w-16">2024</span>
+                        <div>
+                            Joined <strong>Center for Artificial Intelligence Research (C-FAIR)</strong> at Vellore Institute of Technology (VIT), Vellore as Assistant Professor.
+                        </div>
+                    </div>
+
+                    <!-- News Item 4 -->
+                    <div class="flex gap-4 items-start p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-l-2 border-slate-300 dark:border-slate-700">
+                        <span class="font-mono text-xs font-semibold text-slate-500 shrink-0 w-16">2024</span>
+                        <div>
+                            Paper on <em>"Overlapping Word Removal Is All You Need: Revisiting Data Imbalance in Hope Speech Detection"</em> accepted in <strong>Journal of Experimental & Theoretical Artificial Intelligence</strong>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: PUBLICATIONS -->
+        <section id="tab-publications" class="tab-content hidden space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+                <div>
+                    <h2 class="text-2xl font-bold font-serif text-slate-900 dark:text-white">Publications</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Research papers in peer-reviewed journals and top NLP workshops.</p>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full sm:w-64">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" id="pub-search" placeholder="Search title or venue..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600">
+                </div>
+            </div>
+
+            <!-- Category Filter Tags -->
+            <div class="flex flex-wrap gap-2 text-xs font-medium" id="pub-filters">
+                <button data-filter="all" class="filter-btn px-3 py-1 rounded-md bg-blue-600 text-white font-semibold">All</button>
+                <button data-filter="fake-news" class="filter-btn px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200">Fake News & LLMs</button>
+                <button data-filter="dravidian" class="filter-btn px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200">Dravidian NLP</button>
+                <button data-filter="journal" class="filter-btn px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200">Journals</button>
+                <button data-filter="workshop" class="filter-btn px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200">ACL / Workshops</button>
+            </div>
+
+            <!-- Publications List -->
+            <div class="space-y-6" id="pub-list">
+
+                <!-- Publication Item 1 -->
+                <div class="pub-card p-4 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-2" data-tags="fake-news journal">
+                    <div class="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400 font-semibold">
+                        <span class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-800">Journal • Springer (2025)</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">
+                        LeDoFAN: Enhancing Lengthy Document Fake News Identification Leveraging Large Language Models and Explainable Window-Based Transformers with N-Gram Expulsion
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300">
+                        <strong class="text-slate-900 dark:text-white">Hariharan R L</strong>, Anand Kumar Madasamy
+                    </p>
+                    <p class="text-xs italic text-slate-500 dark:text-slate-400">
+                        International Journal of Machine Learning and Cybernetics, Springer, 16(9), 6577–6596 (2025)
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <button onclick="toggleElem('abs-1')" class="paper-link"><i class="fas fa-file-text"></i> Abstract</button>
+                        <button onclick="copyBib('bib-1')" class="paper-link"><i class="fas fa-quote-left"></i> BibTeX</button>
+                        <a href="https://doi.org/10.1007/s13042-024-02410-w" target="_blank" class="paper-link"><i class="fas fa-external-link-alt"></i> Publisher Link</a>
+                    </div>
+
+                    <div id="abs-1" class="hidden p-3 bg-slate-50 dark:bg-slate-900/80 rounded-lg text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 mt-2">
+                        Presents LeDoFAN, a novel window-based transformer approach with n-gram expulsion designed to tackle long document fake news classification by leveraging LLMs and explainable token-level attention mechanisms.
+                    </div>
+                    <textarea id="bib-1" class="hidden">
+@article{hariharan2025ledofan,
+  title={LeDoFAN: enhancing lengthy document fake news identification leveraging large language models and explainable window-based transformers with n-gram expulsion},
+  author={Hariharan, R L and Madasamy, Anand Kumar},
+  journal={International Journal of Machine Learning and Cybernetics},
+  volume={16},
+  number={9},
+  pages={6577--6596},
+  year={2025},
+  publisher={Springer}
+}
+                    </textarea>
+                </div>
+
+                <!-- Publication Item 2 -->
+                <div class="pub-card p-4 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-2" data-tags="fake-news journal">
+                    <div class="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400 font-semibold">
+                        <span class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-800">Journal • Springer (2025)</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">
+                        A Reasoning-Based Explainable Multimodal Fake News Detection for Low Resource Language Using Large Language Models and Transformers
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300">
+                        <strong class="text-slate-900 dark:text-white">Hariharan R L</strong>, Anand Kumar Madasamy
+                    </p>
+                    <p class="text-xs italic text-slate-500 dark:text-slate-400">
+                        Journal of Big Data, Springer, 12(1), 46 (2025)
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <button onclick="toggleElem('abs-2')" class="paper-link"><i class="fas fa-file-text"></i> Abstract</button>
+                        <button onclick="copyBib('bib-2')" class="paper-link"><i class="fas fa-quote-left"></i> BibTeX</button>
+                    </div>
+
+                    <div id="abs-2" class="hidden p-3 bg-slate-50 dark:bg-slate-900/80 rounded-lg text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 mt-2">
+                        Introduces an explainable multimodal framework combining text and visual reasoning using transformers and LLMs specifically adapted for low-resource Dravidian languages.
+                    </div>
+                    <textarea id="bib-2" class="hidden">
+@article{hariharan2025reasoning,
+  title={A reasoning based explainable multimodal fake news detection for low resource language using large language models and transformers},
+  author={Hariharan, R L and Madasamy, Anand Kumar},
+  journal={Journal of Big Data},
+  volume={12},
+  number={1},
+  pages={46},
+  year={2025},
+  publisher={Springer}
+}
+                    </textarea>
+                </div>
+
+                <!-- Publication Item 3 -->
+                <div class="pub-card p-4 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-2" data-tags="journal">
+                    <div class="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                        <span class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800">Journal • Taylor & Francis (2024)</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">
+                        Overlapping Word Removal Is All You Need: Revisiting Data Imbalance in Hope Speech Detection
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300">
+                        <strong class="text-slate-900 dark:text-white">Hariharan R L</strong>, M. Ravikiran, G. Nisha, N. Balamuralidhar, et al.
+                    </p>
+                    <p class="text-xs italic text-slate-500 dark:text-slate-400">
+                        Journal of Experimental & Theoretical Artificial Intelligence, 36(8), 1837–1859 (2024)
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <button onclick="toggleElem('abs-3')" class="paper-link"><i class="fas fa-file-text"></i> Abstract</button>
+                        <button onclick="copyBib('bib-3')" class="paper-link"><i class="fas fa-quote-left"></i> BibTeX</button>
+                    </div>
+
+                    <div id="abs-3" class="hidden p-3 bg-slate-50 dark:bg-slate-900/80 rounded-lg text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 mt-2">
+                        Analyzes severe class imbalance in online hope speech corpora, demonstrating how removing overlapping non-discriminative vocabulary significantly enhances model generalization.
+                    </div>
+                    <textarea id="bib-3" class="hidden">
+@article{hariharan2024overlapping,
+  title={Overlapping word removal is all you need: revisiting data imbalance in hope speech detection},
+  author={Hariharan, R L and Ravikiran, M and Nisha, G and Balamuralidhar, N},
+  journal={Journal of Experimental \& Theoretical Artificial Intelligence},
+  volume={36},
+  number={8},
+  pages={1837--1859},
+  year={2024},
+  publisher={Taylor \& Francis}
+}
+                    </textarea>
+                </div>
+
+                <!-- Publication Item 4 -->
+                <div class="pub-card p-4 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-2" data-tags="dravidian workshop">
+                    <div class="flex items-center gap-2 text-xs text-purple-600 dark:text-purple-400 font-semibold">
+                        <span class="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-900/40 border border-purple-200 dark:border-purple-800">ACL Anthology • EACL 2021</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">
+                        Findings of the Shared Task on Offensive Language Identification in Tamil, Malayalam, and Kannada
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300">
+                        Bharathi Raja Chakravarthi, Ruba Priyadharshini, Navya Jose, Thomas Mandl, Prasanna Kumar Kumaresan, <strong class="text-slate-900 dark:text-white">Hariharan R L</strong>, et al.
+                    </p>
+                    <p class="text-xs italic text-slate-500 dark:text-slate-400">
+                        Proceedings of the First Workshop on Speech and Language Technologies for Dravidian Languages, EACL 2021
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <button onclick="toggleElem('abs-4')" class="paper-link"><i class="fas fa-file-text"></i> Abstract</button>
+                        <button onclick="copyBib('bib-4')" class="paper-link"><i class="fas fa-quote-left"></i> BibTeX</button>
+                        <a href="https://aclanthology.org/2021.dravidianlangtech-1.3/" target="_blank" class="paper-link"><i class="fas fa-external-link-alt"></i> ACL Anthology</a>
+                    </div>
+
+                    <div id="abs-4" class="hidden p-3 bg-slate-50 dark:bg-slate-900/80 rounded-lg text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 mt-2">
+                        Summarizes dataset collection and system performance benchmarking for offensive language identification across three under-resourced Dravidian languages.
+                    </div>
+                    <textarea id="bib-4" class="hidden">
+@inproceedings{chakravarthi2021findings,
+  title={Findings of the shared task on offensive language identification in Tamil, Malayalam, and Kannada},
+  author={Chakravarthi, Bharathi Raja and Priyadharshini, Ruba and Jose, Navya and Mandl, Thomas and Kumaresan, Prasanna Kumar and Hariharan, R L and McCrae, John Philip and Sherly, Elizabeth},
+  booktitle={Proceedings of the First Workshop on Speech and Language Technologies for Dravidian Languages},
+  pages={25--45},
+  year={2021}
+}
+                    </textarea>
+                </div>
+
+                <!-- Publication Item 5 -->
+                <div class="pub-card p-4 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-2" data-tags="dravidian workshop">
+                    <div class="flex items-center gap-2 text-xs text-purple-600 dark:text-purple-400 font-semibold">
+                        <span class="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-900/40 border border-purple-200 dark:border-purple-800">ACL Anthology • TamilNLP 2022</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">
+                        NITK-IT_NLP@TamilNLP-ACL2022: Transformer Based Model for Toxic Span Identification in Tamil
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300">
+                        <strong class="text-slate-900 dark:text-white">Hariharan R L</strong>, M. Ravikiran
+                    </p>
+                    <p class="text-xs italic text-slate-500 dark:text-slate-400">
+                        Proceedings of the Second Workshop on Speech and Language Technologies for Dravidian Languages (ACL 2022)
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <button onclick="toggleElem('abs-5')" class="paper-link"><i class="fas fa-file-text"></i> Abstract</button>
+                        <button onclick="copyBib('bib-5')" class="paper-link"><i class="fas fa-quote-left"></i> BibTeX</button>
+                    </div>
+
+                    <div id="abs-5" class="hidden p-3 bg-slate-50 dark:bg-slate-900/80 rounded-lg text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 mt-2">
+                        Proposes fine-tuned transformer models for exact character and word span extraction highlighting toxic sections in Tamil social media comments.
+                    </div>
+                    <textarea id="bib-5" class="hidden">
+@inproceedings{hariharan2022toxicspan,
+  title={NITK-IT\_NLP@ TamilNLP-ACL2022: Transformer based model for toxic span identification in Tamil},
+  author={Hariharan, R L and Ravikiran, M},
+  booktitle={Proceedings of the Second Workshop on Speech and Language Technologies for Dravidian Languages},
+  year={2022}
+}
+                    </textarea>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 3: CV & EXPERIENCE PAGE -->
+        <section id="tab-cv" class="tab-content hidden space-y-8">
+            <!-- Header Banner with Full CV Link -->
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-900 to-indigo-900 text-white shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="space-y-1">
+                    <span class="text-xs font-semibold tracking-wider text-blue-300 uppercase">Curriculum Vitae Summary</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold">Dr. Hariharan R L</h2>
+                    <p class="text-xs sm:text-sm text-blue-100">Assistant Professor @ C-FAIR, VIT Vellore • PhD (NITK Surathkal)</p>
+                </div>
+                <div>
+                    <a href="https://sites.google.com/view/hariharanrl/home" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-blue-900 font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-blue-50 transition shrink-0">
+                        <i class="fas fa-download"></i> View / Download Full CV (PDF)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Executive Summary Box -->
+            <div class="p-5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
+                <h3 class="text-base font-bold text-slate-900 dark:text-white font-serif flex items-center gap-2">
+                    <i class="fas fa-user-check text-blue-600"></i> Executive Academic Summary
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Dr. Hariharan R L is an Assistant Professor at the Center for Artificial Intelligence Research (C-FAIR), Vellore Institute of Technology (VIT), Vellore. He completed his Ph.D. in Information Technology at NITK Surathkal, specializing in Explainable Disinformation Detection and Dravidian Natural Language Processing. He has published 15+ peer-reviewed articles in high-impact Springer journals, Taylor & Francis, and ACL Anthology workshops. His background combines high-level AI research with industrial enterprise system expertise.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Academic & Professional Appointments -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-serif font-bold text-slate-900 dark:text-white pb-2 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+                        <i class="fas fa-briefcase text-blue-600"></i> Academic Positions
+                    </h3>
+
+                    <div class="space-y-4 text-xs sm:text-sm">
+                        <div class="relative pl-4 border-l-2 border-blue-600">
+                            <span class="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400">2024 – Present</span>
+                            <h4 class="font-bold text-slate-900 dark:text-white">Assistant Professor</h4>
+                            <p class="text-slate-600 dark:text-slate-300">Center for Artificial Intelligence Research (C-FAIR)</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Vellore Institute of Technology (VIT), Vellore, Tamil Nadu, India</p>
+                        </div>
+
+                        <div class="relative pl-4 border-l-2 border-slate-300 dark:border-slate-700">
+                            <span class="text-xs font-mono font-semibold text-slate-500">Doctoral Scholar</span>
+                            <h4 class="font-bold text-slate-900 dark:text-white">Research Scholar (PhD)</h4>
+                            <p class="text-slate-600 dark:text-slate-300">Department of Information Technology, NITK Surathkal</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Focused on LLMs, Multimodal Fake News Detection, and Dravidian Language Processing</p>
+                        </div>
+
+                        <div class="relative pl-4 border-l-2 border-slate-300 dark:border-slate-700">
+                            <span class="text-xs font-mono font-semibold text-slate-500">Industry Practice</span>
+                            <h4 class="font-bold text-slate-900 dark:text-white">Enterprise Systems Specialist & IT Consultant</h4>
+                            <p class="text-slate-600 dark:text-slate-300">Enterprise Technology Solutions</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Specialized in ABAP development, software architecture, data migration, and enterprise computing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-serif font-bold text-slate-900 dark:text-white pb-2 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+                        <i class="fas fa-graduation-cap text-blue-600"></i> Education
+                    </h3>
+
+                    <div class="space-y-4 text-xs sm:text-sm">
+                        <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-slate-900 dark:text-white">Ph.D. in Information Technology</h4>
+                                <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Doctorate</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 font-medium mt-1">National Institute of Technology Karnataka (NITK Surathkal)</p>
+                            <p class="text-xs italic text-slate-500 dark:text-slate-400 mt-1">
+                                Dissertation: "An Explainable Textual and Multimodal Disinformation Detection Leveraging Large Language Models"
+                            </p>
+                        </div>
+
+                        <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                            <h4 class="font-bold text-slate-900 dark:text-white">Post-Graduate & Undergraduate Engineering Degrees</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-1">Computer Science & Engineering / Information Technology specialization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills & Academic Review Service Grid -->
+            <div class="grid md:grid-cols-2 gap-8 pt-4">
+                <!-- Research Skills & Tech Stack -->
+                <div class="space-y-3">
+                    <h3 class="text-base font-serif font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fas fa-code text-blue-600"></i> Technical & Research Competencies
+                    </h3>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">PyTorch</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">Hugging Face Transformers</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">LLM Fine-Tuning (LoRA/QLoRA)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">Explainable AI (LIME / SHAP / Attention Maps)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">Multimodal Fusion</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">Dravidian Languages (Tamil, Malayalam)</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">Python & Scikit-Learn</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">SAP ABAP & Enterprise Systems</span>
+                    </div>
+                </div>
+
+                <!-- Academic Reviewing & Service -->
+                <div class="space-y-3">
+                    <h3 class="text-base font-serif font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fas fa-award text-blue-600"></i> Academic Service & Benchmarks
+                    </h3>
+                    <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+                            <span>Peer Reviewer for international journals in AI and natural language processing.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+                            <span>Participant & Mentor in CLEF CheckThat!, FinCausal, and DravidianLangTech shared tasks.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+                            <span>Academic Advisor for B.Tech & M.Tech thesis research at VIT Vellore.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: RESEARCH FOCUS -->
+        <section id="tab-research" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h2 class="text-2xl font-bold font-serif text-slate-900 dark:text-white">Research Thrust Areas</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Overview of active projects and research trajectories at C-FAIR.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Research Card 1 -->
+                <div class="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg font-bold">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white font-serif">Explainable Disinformation Detection</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Designing windowed transformer models and LLM reasoning pipelines (such as LeDoFAN) capable of handling long-form fake news documents while providing word-level and sentence-level explanations.
+                    </p>
+                </div>
+
+                <!-- Research Card 2 -->
+                <div class="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg font-bold">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white font-serif">Low-Resource Dravidian Languages</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Developing language processing models for code-mixed Dravidian scripts (Tamil, Malayalam, Kannada). Applications include toxic span detection, hope speech classification, and offensive content moderation.
+                    </p>
+                </div>
+
+                <!-- Research Card 3 -->
+                <div class="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg font-bold">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white font-serif">Multimodal Disinformation Reasoning</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Fusing visual evidence with natural language reasoning to uncover miscaptioned images, manipulated social media memes, and cross-modal discrepancies in news posts.
+                    </p>
+                </div>
+
+                <!-- Research Card 4 -->
+                <div class="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg font-bold">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white font-serif">Class Imbalance & Overlapping Vocabulary</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Investigating mathematical strategies for highly imbalanced corpora, including overlapping word removal, loss reweighting (Focal Loss), and SMOTE sampling in deep networks.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: CONTACT -->
+        <section id="tab-contact" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h2 class="text-2xl font-bold font-serif text-slate-900 dark:text-white">Contact & Office</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Feel free to reach out for research discussions or academic inquiries.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Address Card -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white font-serif">Office Location</h3>
+
+                    <div class="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-university text-blue-600 mt-1"></i>
+                            <div>
+                                <strong>Center for Artificial Intelligence Research (C-FAIR)</strong><br>
+                                Vellore Institute of Technology (VIT)<br>
+                                Vellore - 632014, Tamil Nadu, India
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-blue-600"></i>
+                            <span class="font-mono text-slate-900 dark:text-slate-100">hariharan.rl [at] vit.ac.in</span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-globe text-blue-600"></i>
+                            <a href="https://sites.google.com/view/hariharanrl/home" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">sites.google.com/view/hariharanrl</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Message Simulation Form -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white font-serif">Send a Note</h3>
+                    <form onsubmit="handleSendMsg(event)" class="space-y-3">
+                        <input type="text" placeholder="Your Name" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 text-slate-900 dark:text-white">
+                        <input type="email" placeholder="Your Email" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 text-slate-900 dark:text-white">
+                        <textarea rows="3" placeholder="Message / Collaboration Query" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 text-slate-900 dark:text-white"></textarea>
+                        <button type="submit" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs rounded-lg shadow transition">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="form-toast" class="hidden text-xs text-center p-2 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 rounded">
+                        Message formatted. Thank you!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div>
+                © <span id="year"></span> Dr. Hariharan R L • C-FAIR, VIT Vellore
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#about" onclick="switchTab('about')" class="hover:text-blue-600">Home</a>
+                <a href="#publications" onclick="switchTab('publications')" class="hover:text-blue-600">Publications</a>
+                <a href="#research" onclick="switchTab('research')" class="hover:text-blue-600">Research Focus</a>
+                <a href="#cv" onclick="switchTab('cv')" class="hover:text-blue-600">CV</a>
+                <a href="#contact" onclick="switchTab('contact')" class="hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Component -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-2.5 rounded-xl text-xs font-medium shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-50 flex items-center gap-2">
+        <i class="fas fa-check-circle text-emerald-400"></i>
+        <span id="toast-text">BibTeX copied to clipboard!</span>
+    </div>
+
+    <script>
+        // Set Current Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle Logic
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+            themeIcon.className = 'fas fa-sun text-amber-400';
+        }
+
+        themeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.className = 'fas fa-sun text-amber-400';
+            } else {
+                themeIcon.className = 'fas fa-moon text-slate-600';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const navBtns = document.querySelectorAll('.nav-btn');
+
+            tabs.forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('block');
+            });
+
+            navBtns.forEach(btn => {
+                btn.classList.remove('active-tab');
+            });
+
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            const targetNav = document.getElementById(`nav-${tabId}`);
+
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+                targetTab.classList.add('block');
+            }
+
+            if (targetNav) {
+                targetNav.classList.add('active-tab');
+            }
+
+            mobileMenu.classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle Element Visibility (e.g., Abstract)
+        function toggleElem(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        // Copy BibTeX Functionality
+        function copyBib(id) {
+            const text = document.getElementById(id).value.trim();
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("BibTeX copied to clipboard!");
+            }).catch(() => {
+                showToast("Copied text!");
+            });
+        }
+
+        // Toast Handler
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toast-text');
+            toastText.textContent = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+
+        // Publications Filter and Search
+        const searchInput = document.getElementById('pub-search');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const pubCards = document.querySelectorAll('.pub-card');
+
+        let activeFilter = 'all';
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-blue-600', 'text-white', 'font-semibold');
+                    b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                });
+                btn.classList.add('bg-blue-600', 'text-white', 'font-semibold');
+                btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+
+                activeFilter = btn.getAttribute('data-filter');
+                filterPublications();
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterPublications);
+        }
+
+        function filterPublications() {
+            const query = searchInput.value.toLowerCase().trim();
+
+            pubCards.forEach(card => {
+                const tags = card.getAttribute('data-tags') || '';
+                const text = card.textContent.toLowerCase();
+
+                const matchesFilter = (activeFilter === 'all') || tags.includes(activeFilter);
+                const matchesQuery = text.includes(query);
+
+                if (matchesFilter && matchesQuery) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Message Simulation
+        function handleSendMsg(e) {
+            e.preventDefault();
+            const msgBox = document.getElementById('form-toast');
+            msgBox.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                msgBox.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
